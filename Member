@@ -1,0 +1,116 @@
+
+/**
+ * a basic class that stores the member's information.
+ *
+ * @author: Noureen Zakaria
+ * @Student ID: 00709220
+ * @version (starting date): 11/11/2023
+ * @last update:  23/11/2023
+ */
+public class Member
+{
+    //to store the email of the user
+    private String email;
+    //to sore the membership number of the user
+    private int membershipNumber;
+    //to store the active status of the user
+    private boolean loggedInStatus;
+    //to store the holiday that is selected
+    private Holiday holiday;
+    //to store a reference to the website the member has logged into
+    private Website website;
+
+     //Constructor for objects of class Member
+    public Member(String email, int membershipNumber, boolean loggedInStatus)
+    {
+        this.email = email;
+        this.membershipNumber = membershipNumber;
+        loggedInStatus = false;
+        
+    }
+    
+     // an accessor method for the email
+     // returns email
+    public String getEmail(){
+        return email;
+    }
+    
+    //a mutator method for the email 
+    public void setEmail (String email){
+        this.email=email;
+    }
+    
+    //an accessor method of the membership number of the user
+    // returns membership number
+    public int getMembershipNumber(){
+        return membershipNumber;
+    }
+    
+    //a mutator method for the membershipNumber
+    public void setMembershipNumber(int membershipNumber){
+        this.membershipNumber = membershipNumber;
+    }
+    
+    //an accessor method for loggedInStatus;
+    public boolean getLoggedInStatus()
+    {
+        return loggedInStatus;
+    }
+    
+    //this is a method which passes the boolean value of loggedInStatus as a value  
+    public void setLoggedInStatus(boolean loggedInStatus){
+        this.loggedInStatus = loggedInStatus;
+    }
+    
+    //an accessor method for website field
+    public Holiday getHoliday() {
+        return holiday;
+    }
+    
+    //a mutator method for website field 
+    public void setHoliday(){
+        this.holiday = holiday;
+    }
+    
+    // an accessor method for the field website
+    //returns the name of the website
+    public Website getWebsite() {
+    return website;
+    }
+    
+    // a mutator method to allow the field website to be given a value 
+    public void setWebsite(Website website){
+        this.website = website;
+    }
+    
+    // a method that allows members to choose a holiday, provided a user is loggen in into the website,
+    // and for that, i will use an if statement.
+    public void selectHoliday(Holiday holiday)
+    {
+        if (loggedInStatus = true){
+            this.holiday = holiday;
+            System.out.println("Member ID: " + membershipNumber );
+            System.out.println("Holiday reference number: " + holiday.getRefNumber());
+            System.out.println("Holiday type: " + holiday.getType());
+            System.out.println("Holiday price: " + holiday.getPrice());
+        }
+        else
+        {
+        System.out.println("please log in first to select a holiday");
+        }
+    }
+    
+    // a method to allow a member to pay for the holiday 
+    public void payForHoliday()
+    {
+        //call a method in Website class to pay for the holiday
+       if (website != null && holiday != null)
+       {
+           website.checkout(this);
+       }
+       else
+       {
+           System.out.println("log in to the website first then select a holiday to pay for the holiday");
+       }
+    }
+}

@@ -1,0 +1,128 @@
+
+/**
+ * a basic website class that represents a website.
+ *
+ * @author: Noureen Zakaria
+ * @Student ID: 00709220
+ * @version (starting date): 11/11/2023
+ * @last update:  23/11/2023
+ */
+public class Website
+{
+    //to store the name of the website
+    private String websiteName;
+    //to record the number of browsers who logged into the website
+    private int hits;
+    //to record the amount of money taken at checkout
+    private double salesTotal;
+    // the member object
+    private Member member;
+    // the holiday object
+    private Holiday holiday;
+    //the website object
+    private Website website;
+    
+
+    // Constructor for objects of class Website
+    public Website(String websiteName)
+    {
+        this.websiteName = websiteName;
+        this.hits = 0;
+        this.salesTotal = 0.0;
+        
+    } 
+    
+    // accessor method for Website Name
+    //returns website name 
+    public String getWebsiteName()
+    {
+     return websiteName;
+    }
+    
+    // mutator method for website name
+    public void setWebsiteName(String websiteName)
+    {
+    this.websiteName = websiteName;
+    }
+    
+    //accessor method for number of hits
+    //returns number of hits
+     
+    public int getHits()
+    {
+     return hits;
+    }
+    
+    // mutator method for number of hits
+     
+    public void setHits(int hits)
+    {
+        this.hits = hits;
+    }
+    
+    //accessor method for total of sales
+    // returns sales total
+     
+    public double getSalesTotal()
+    {
+        return salesTotal;
+    }
+    
+    // mutator method for total of sales
+    public void setSalesTotal(double salesTotal)
+    {
+        this.salesTotal = salesTotal;
+    }
+   
+    // method that allows member to log in to the site
+    public void memberLogin(Member member){
+        
+      //calling setLoggedInStatus from the class Member and since it is for log in, the log in status has to be true.
+      member.setLoggedInStatus(true);
+      website = member.getWebsite();
+      member.setWebsite(this);
+      System.out.println(websiteName + " welcomes member " + member.getMembershipNumber() +", you are now logged in.");
+    }
+    
+    
+    //method that allows member to log out of the site
+    public void memberLogOut(Member member){
+    
+      //calling setLoggedInStatus from the class Member and since it is for log out, the log in status has to be false
+      member.setLoggedInStatus(false);
+      member.setWebsite(null);
+      System.out.println("Member " + member.getMembershipNumber() + " has logged out");
+    
+    }
+    
+    
+    // method to perform the checkout process
+    public void checkout(Member member){
+        if (checkHitDiscount())
+        {
+            
+            double priceAfterDiscount = holiday.getPrice() * 0.90;
+            salesTotal += priceAfterDiscount;
+            System.out.println("The transaction process for the member with the number " + member.getMembershipNumber() + " has been completed successfully.");
+
+        }
+        else
+        {
+            salesTotal += holiday.getPrice();
+             System.out.println("The transaction process for the member with the number " + member.getMembershipNumber() + " has been completed successfully.");
+        }   
+    }
+    
+    //a method to give a discount for every 10th member to log in into the website,
+    //if they select and pay during this login session they will recieve a 10% discount at checkout. 
+    public boolean checkHitDiscount(){
+    if (hits %10 == 0)
+    {
+            System.out.println("congratulations!! you will recieve a 10% discont");
+        return true; 
+    }
+    return false;
+    }    
+    }
+
+    

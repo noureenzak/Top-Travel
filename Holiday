@@ -1,0 +1,67 @@
+
+/**
+ * a basic Holiday class that allows members to select a holiday.
+ *
+ * @author: Noureen Zakaria
+ * @Student ID: 00709220
+ * @version (starting date): 11/11/2023
+ * @last update: 23 /11/2023
+ */
+public class Holiday
+{
+    //reference number that contains a uique sequence of letters and digits
+    private String refNumber;
+    //type of holiday
+    private String type;
+    //the price of holiday in pounds per person
+    private double price;
+    // Constructor for objects of class Holiday
+     
+    public Holiday (String refNumber, String type, double price)
+    {
+        this.refNumber = refNumber;
+        this.type = type;
+        this.price = price;
+        
+    }
+    
+    // accessor for reference number of the holidy
+    // returns reference number
+    public String getRefNumber()
+    {
+        return refNumber;
+    }
+    
+    // mutator for reference number of the holiday
+    public void setRefNumber(String refNumber)
+    {
+        this.refNumber = refNumber;
+    }
+    
+    // accessor for type of the holiday
+     // returns type of the holiday
+
+    public String getType()
+    {
+        return type;
+    }
+    
+    // mutator for type of theholiday
+    public void setType(String type)
+    {
+        this.type = type;
+    }
+    
+    //accessor for price of the holiday
+    // returns price 
+    public double getPrice()
+    {
+        return price;
+    }
+    
+    // mutator for price of the holiday
+    public void setPrice(double price)
+    {
+        this.price = price;
+    }
+}
